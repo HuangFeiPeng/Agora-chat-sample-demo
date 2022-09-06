@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
-import AgoraClient from '../../IM/initIM'
+import {AgoraClient} from '../../IM/initIM'
 const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')

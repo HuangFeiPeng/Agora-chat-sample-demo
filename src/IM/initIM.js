@@ -6,4 +6,4 @@ AgoraClient = AgoraChat.conn = new AgoraChat.connection({
     appKey: '41117440#383391'
 })
 
-export default AgoraClient
+export { AgoraChat, AgoraClient }
