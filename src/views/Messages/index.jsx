@@ -1,6 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { AgoraChat, AgoraClient } from '../../IM/initIM'
-const Messages = () => {
+const Messages = (props) => {
+    const {addNewMessage} = props;
+    console.log('messages props',props);
     const [targetId, setTargetId] = useState('')
     const [content, setContent] = useState('')
     const [chatType, setChatType] = useState('')
@@ -34,6 +36,7 @@ const Messages = () => {
         }).catch((e) => {
             console.log("Send private text error",e);
         });
+        addNewMessage({from:AgoraClient.user,to:targetId,msg:content})
     }
     return (
         <Fragment>
@@ -41,10 +44,6 @@ const Messages = () => {
             <input type="text" onChange={handleTargetId} value={targetId} placeholder="请输入目标ID..." />
             <input type="text" onChange={handleContent} value={content} placeholder='请输入发送内容...' />
             <button onClick={sendTextMessages}>发送</button>
-            <div>
-                {targetId}
-                {content}
-            </div>
         </Fragment>
     )
 }
